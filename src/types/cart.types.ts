@@ -1,0 +1,24 @@
+export interface ICart {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+
+  userId: string;
+  order: string;
+  status: string;
+
+  items: ICartItem[];
+}
+
+export interface ICartItem extends ISimpleCartItem {
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ISimpleCartItem {
+  id: string;
+  cartId: string;
+  productId: string;
+  quantity: number;
+  asSecondItem: boolean;
+}
