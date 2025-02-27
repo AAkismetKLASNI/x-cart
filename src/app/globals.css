@@ -8,7 +8,7 @@
 }
 
 body {
-  @apply container mx-auto bg-bg;
+  @apply bg-bg;
 }
 
 input {

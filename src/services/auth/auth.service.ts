@@ -17,7 +17,6 @@ interface IAuthRes {
 
 class AuthService {
   async main(type: 'login' | 'register', data: IFormData, cartItems?: ISimpleCartItem[]) {
-    console.log('send data');
     const response = await axiosClassic.post<IAuthRes>(
       `/auth/${type}`,
       cartItems?.length ? { ...data, cartItems } : data
