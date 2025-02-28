@@ -1,5 +1,6 @@
 import { instance } from '@/api/axios';
-import { ICart, ICartItem } from '@/types/cart.types';
+import type { ICart, ICartItem } from '@/types/cart.types';
+import { AxiosPromise } from 'axios';
 
 class CartService {
   private BASE_URL = '/cart';
@@ -12,7 +13,7 @@ class CartService {
     return instance.post<ICartItem>(this.BASE_URL, { productId, quatity, asSecondItem });
   }
 
-  removeFromCart(cartItemId: string) {
+  removeFromCart(cartItemId: string): AxiosPromise<ICart> {
     return instance.delete(this.BASE_URL, { data: { cartItemId } });
   }
 }

@@ -1,3 +1,5 @@
+import { TCartProduct } from './product.types';
+
 export interface ICart {
   id: string;
   createdAt: string;
@@ -17,8 +19,13 @@ export interface ICartItem extends ISimpleCartItem {
 
 export interface ISimpleCartItem {
   id: string;
-  cartId: string;
-  productId: string;
+  product: TCartProduct;
   quantity: number;
   asSecondItem: boolean;
+}
+
+export interface IAddToCart {
+  product: TCartProduct;
+  quantity: number;
+  asSecondItem?: boolean;
 }
