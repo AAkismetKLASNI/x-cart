@@ -2,6 +2,7 @@
 
 import type { IProduct } from '@/types/product.types';
 import { ProductItem } from './components/product.item';
+import { useCart } from '@/hooks/use.cart';
 
 interface Props {
   products: IProduct[];

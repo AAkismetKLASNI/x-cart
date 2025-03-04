@@ -1,6 +1,5 @@
 import axios, { CreateAxiosDefaults } from 'axios';
 import { getAccessToken, removeToken } from '../services/auth/auth.helper';
-import { error } from 'console';
 import { errorCatch } from './api.helper';
 import { authService } from '@/services/auth/auth.service';
 

@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
+import { useGuestCartStore } from '@/store/guest.store';
 
 export function useAuthForm(isLogin: boolean) {
   const router = useRouter();
@@ -22,15 +23,18 @@ export function useAuthForm(isLogin: boolean) {
 
   const clientError = errors.email?.message || errors.password?.message;
 
+  const { items, clearCart } = useGuestCartStore();
+
   useEffect(() => {
     if (clientError) toast.error(clientError);
   }, [clientError]);
 
   const { mutate: mutateRegister, isPending: isPendingRegister } = useMutation({
     mutationKey: ['register'],
-    mutationFn: (data: IFormData) => authService.main('register', data),
+    mutationFn: (data: IFormData) => authService.main('register', data, items),
     onSuccess: () => {
       reset();
+      clearCart();
       router.push(PUBLIC_PAGES.HOME);
     },
     onError: async (error) => {
@@ -40,13 +44,12 @@ export function useAuthForm(isLogin: boolean) {
     },
   });
 
-  // feat: add cart
-
   const { mutate: mutateLogin, isPending: isPendingLogin } = useMutation({
     mutationKey: ['login'],
-    mutationFn: (data: IFormData) => authService.main('login', data, []),
+    mutationFn: (data: IFormData) => authService.main('login', data),
     onSuccess: () => {
       reset();
+      clearCart();
       router.push(PUBLIC_PAGES.HOME);
     },
     onError: async (error) => {

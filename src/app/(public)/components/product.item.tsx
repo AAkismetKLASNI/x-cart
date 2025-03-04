@@ -3,6 +3,7 @@ import type { IProduct } from '@/types/product.types';
 import Image from 'next/image';
 import { ShoppingCart } from 'lucide-react';
 import { m } from 'framer-motion';
+import { useAddToCart } from '@/hooks/use.add.to.cart';
 
 const cardVariants = {
   hidden: { opacity: 0, x: -20 },
@@ -23,6 +24,12 @@ interface Props {
 }
 
 export function ProductItem({ product, index }: Props) {
+  const { mutateAddToCart } = useAddToCart();
+
+  const handleAddToCart = () => {
+    mutateAddToCart({ product, quantity: 1 });
+  };
+
   return (
     <m.div
       className='bg-white rounded-md shadow-md shadow-neutral-200 lg:p-2 relative space-y-4 cursor-pointer'
@@ -37,6 +44,7 @@ export function ProductItem({ product, index }: Props) {
         className='mx-auto rounded-md select-none'
         width={200}
         height={200}
+        priority={true}
       />
 
       <div className='space-y-2 p-1'>
@@ -45,7 +53,10 @@ export function ProductItem({ product, index }: Props) {
           <p className='line-clamp-1'>{product.name}</p>
         </div>
         <p className='line-clamp-2 text-black/60'>{product.description}</p>
-        <Button className='w-full hover:scale-95'>
+        <Button
+          className='w-full hover:scale-95'
+          onClick={handleAddToCart}
+        >
           <ShoppingCart
             size='20'
             className='mx-auto'

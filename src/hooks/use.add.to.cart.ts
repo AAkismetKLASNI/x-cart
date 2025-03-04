@@ -10,7 +10,7 @@ export function useAddToCart() {
 
   const { addItem } = useGuestCartStore();
 
-  const mutation = useMutation({
+  const { mutate: mutateAddToCart } = useMutation({
     mutationFn: async (cartData: IAddToCart) => {
       if (!user.isLoggedIn) {
         addItem(cartData);
@@ -33,5 +33,5 @@ export function useAddToCart() {
     },
   });
 
-  return { mutation };
+  return { mutateAddToCart };
 }

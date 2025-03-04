@@ -8,21 +8,31 @@ import { useEffect } from 'react';
 export const useProfile = () => {
   const { data, isLoading } = useQuery({
     queryKey: ['profile'],
-    queryFn: () => userService.fetchProfile(),
+    queryFn: async () => {
+      const profile = await userService.fetchProfile();
+      if (!profile) return null;
+      return profile;
+    },
     refetchInterval: 1800000,
   });
 
-  const { data: dataTokens, isSuccess } = useQuery({
-    queryKey: ['new tokens'],
-    queryFn: () => authService.getNewTokens(),
-    enabled: !data?.data,
-  });
+  //fix: решить нужно ли мне это
+  // const { data: dataTokens, isSuccess } = useQuery({
+  //   queryKey: ['new tokens'],
+  //   queryFn: async () => {
+  //     const res = await authService.getNewTokens();
+  //     console.log('res', res);
 
-  useEffect(() => {
-    if (!isSuccess) return;
+  //     return res;
+  //   },
+  //   enabled: !data,
+  // });
 
-    if (dataTokens.data.accessToken) saveTokenStorage(dataTokens.data.accessToken);
-  }, [isSuccess]);
+  // useEffect(() => {
+  //   if (!isSuccess) return;
+
+  //   if (dataTokens.data.accessToken) saveTokenStorage(dataTokens.data.accessToken);
+  // }, [isSuccess]);
 
   const profile = data?.data;
 

@@ -9,8 +9,8 @@ class CartService {
     return instance.get<ICart>(this.BASE_URL);
   }
 
-  addToCart(productId: string, quatity: number, asSecondItem?: boolean) {
-    return instance.post<ICartItem>(this.BASE_URL, { productId, quatity, asSecondItem });
+  addToCart(productId: string, quantity: number, asSecondItem?: boolean) {
+    return instance.post<ICartItem>(this.BASE_URL, { productId, quantity, asSecondItem });
   }
 
   removeFromCart(cartItemId: string): AxiosPromise<ICart> {
