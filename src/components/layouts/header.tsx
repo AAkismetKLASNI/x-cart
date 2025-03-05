@@ -5,6 +5,7 @@ import { Logo } from '../ui/logo';
 import { ShoppingCart, User } from 'lucide-react';
 import Link from 'next/link';
 import { privatePages } from '@/configs/private.config';
+import { Icon } from '../ui/icon';
 
 export function Header() {
   const { cartItems } = useCart();
@@ -18,17 +19,17 @@ export function Header() {
 
           <div className='flex space-x-6 bg-secondary p-2 rounded-full px-6'>
             <Link href={privatePages.LK}>
-              <User className='cursor-pointer text-gray-700 hover:text-text transition-colors' />
+              <Icon Icon={User} />
             </Link>
 
             <Link
               href={privatePages.BASKET}
               className='relative'
             >
-              <ShoppingCart className='cursor-pointer text-gray-700 hover:text-text transition-colors' />
+              <Icon Icon={ShoppingCart} />
               {!!countItems && (
                 <span className='absolute inline-flex px-1 text-xs text-white bg-red-500 rounded-full top-1 -translate-y-1/2 translate-x-full'>
-                  {countItems}
+                  {countItems < 10 ? countItems : '+9'}
                 </span>
               )}
             </Link>

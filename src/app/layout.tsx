@@ -6,7 +6,7 @@ import { Providers } from './providers';
 const inset = Fira_Mono({ subsets: ['cyrillic'], weight: ['400', '500', '700'] });
 
 export const metadata: Metadata = {
-  title: 'x-cart',
+  title: 'Интернет магазин X-cart - лучший ассортимент',
   description: 'the best cart in store!',
   icons: 'logo.svg',
 };

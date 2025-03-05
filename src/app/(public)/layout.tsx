@@ -3,7 +3,7 @@ import { PropsWithChildren } from 'react';
 
 export default function Layout({ children }: PropsWithChildren) {
   return (
-    <div className='space-y-10'>
+    <div className='space-y-10 pb-4'>
       <Header />
       <main className='container mx-auto px-2'>{children}</main>
     </div>

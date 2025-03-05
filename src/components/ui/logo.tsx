@@ -1,15 +1,22 @@
+import { PUBLIC_PAGES } from '@/configs/public.config';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export function Logo() {
   return (
-    <Image
-      src='/logo.svg'
-      alt='logo'
-      width='50'
-      height='50'
-      priority={true}
-      placeholder='blur'
-      blurDataURL='/logo.svg'
-    />
+    <Link
+      href={PUBLIC_PAGES.HOME}
+      className='inline-block select-none'
+    >
+      <Image
+        src='/logo.svg'
+        alt='logo'
+        width='50'
+        height='50'
+        priority={true}
+        placeholder='blur'
+        blurDataURL='/logo.svg'
+      />
+    </Link>
   );
 }

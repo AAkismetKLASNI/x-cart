@@ -8,6 +8,12 @@
   --color-text: #272727;
 }
 
+@layer components {
+  .main-wrapper {
+    @apply bg-white rounded-md shadow-md shadow-neutral-200 p-2;
+  }
+}
+
 body {
   @apply bg-bg;
 }

@@ -46,7 +46,7 @@ export function useAuthForm(isLogin: boolean) {
 
   const { mutate: mutateLogin, isPending: isPendingLogin } = useMutation({
     mutationKey: ['login'],
-    mutationFn: (data: IFormData) => authService.main('login', data),
+    mutationFn: (data: IFormData) => authService.main('login', data, items),
     onSuccess: () => {
       reset();
       clearCart();

@@ -9,7 +9,7 @@ export function useRemoveFromCart() {
 
   const { removeItem, items } = useGuestCartStore();
 
-  const mutation = useMutation({
+  const { mutate: mutateRemoveItem } = useMutation({
     mutationFn: async (cartItemId: string) => {
       if (!user.isLoggedIn) {
         removeItem(cartItemId);
@@ -30,5 +30,5 @@ export function useRemoveFromCart() {
     },
   });
 
-  return { mutation };
+  return { mutateRemoveItem };
 }

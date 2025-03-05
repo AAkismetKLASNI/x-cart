@@ -32,7 +32,7 @@ export function ProductItem({ product, index }: Props) {
 
   return (
     <m.div
-      className='bg-white rounded-md shadow-md shadow-neutral-200 lg:p-2 relative space-y-4 cursor-pointer'
+      className='main-wrapper lg:p-2 relative space-y-4 cursor-pointer'
       initial='hidden'
       animate='visible'
       custom={index}
