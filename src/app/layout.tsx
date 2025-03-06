@@ -8,7 +8,7 @@ const inset = Fira_Mono({ subsets: ['cyrillic'], weight: ['400', '500', '700'] }
 export const metadata: Metadata = {
   title: 'Интернет магазин X-cart - лучший ассортимент',
   description: 'the best cart in store!',
-  icons: 'logo.svg',
+  icons: '/logo.svg',
 };
 
 export default function RootLayout({

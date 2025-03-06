@@ -9,7 +9,7 @@ export function Button({ className, children, ...props }: Props) {
   return (
     <button
       className={twMerge(
-        `py-2 px-4 bg-gradient-to-r cursor-pointer font-semibold text-white from-blue-400 to-accent rounded-md transition-transform hover:scale-105 ${className}`
+        `py-2 px-4 bg-gradient-to-r cursor-pointer font-semibold text-white from-blue-400 to-accent rounded-md transition-transform hover:scale-95 ${className}`
       )}
       {...props}
     >

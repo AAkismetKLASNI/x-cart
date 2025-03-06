@@ -1,5 +1,5 @@
 import { instance } from '@/api/axios';
-import type { ICart, ICartItem } from '@/types/cart.types';
+import type { ICart, ICartItem, IChangeQuantityItem } from '@/types/cart.types';
 import { AxiosPromise } from 'axios';
 
 class CartService {
@@ -15,6 +15,10 @@ class CartService {
 
   removeFromCart(cartItemId: string): AxiosPromise<ICart> {
     return instance.delete(this.BASE_URL, { data: { cartItemId } });
+  }
+
+  changeQuantityCartItem(cartItem: IChangeQuantityItem) {
+    return instance.patch(`${this.BASE_URL}/change-quantity`, cartItem);
   }
 }
 

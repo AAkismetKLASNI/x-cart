@@ -29,3 +29,9 @@ export interface IAddToCart {
   quantity: number;
   asSecondItem?: boolean;
 }
+
+export interface IChangeQuantityItem {
+  id: string;
+  quantity: number;
+  type: 'increment' | 'decrement';
+}

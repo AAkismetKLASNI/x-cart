@@ -2,6 +2,7 @@ import { useGuestCartStore } from '@/store/guest.store';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useProfile } from './use.profile';
 import { cartService } from '@/services/cart.service';
+import toast from 'react-hot-toast';
 
 export function useRemoveFromCart() {
   const { user } = useProfile();
@@ -27,6 +28,7 @@ export function useRemoveFromCart() {
       } else {
         queryClient.invalidateQueries({ queryKey: ['cart', true] });
       }
+      toast.success('The product has been deleted');
     },
   });
 

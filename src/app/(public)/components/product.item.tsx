@@ -41,7 +41,7 @@ export function ProductItem({ product, index }: Props) {
       <Image
         src={product.image}
         alt={product.name}
-        className='mx-auto rounded-md select-none'
+        className='mx-auto rounded-md'
         width={200}
         height={200}
         priority={true}
@@ -54,7 +54,7 @@ export function ProductItem({ product, index }: Props) {
         </div>
         <p className='line-clamp-2 text-black/60'>{product.description}</p>
         <Button
-          className='w-full hover:scale-95'
+          className='w-full'
           onClick={handleAddToCart}
         >
           <ShoppingCart

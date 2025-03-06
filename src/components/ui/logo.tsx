@@ -6,14 +6,13 @@ export function Logo() {
   return (
     <Link
       href={PUBLIC_PAGES.HOME}
-      className='inline-block select-none'
+      className='inline-block '
     >
       <Image
         src='/logo.svg'
         alt='logo'
         width='50'
         height='50'
-        priority={true}
         placeholder='blur'
         blurDataURL='/logo.svg'
       />

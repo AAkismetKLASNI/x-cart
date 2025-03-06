@@ -6,7 +6,7 @@ class PromoService {
   async checkPromo(promo: string) {
     if (!promo) return null;
 
-    return instance.get<null | number>(`this.BASE_URL/check/${promo}`);
+    return instance.get<null | number>(`${this.BASE_URL}/check/${promo}`);
   }
 }
 

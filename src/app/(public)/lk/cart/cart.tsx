@@ -1,11 +1,12 @@
 'use client';
 
 import { useCart } from '@/hooks/use.cart';
-import { CartItem } from './cart.item';
+import { CartItem } from './components/cart.item';
 import { Button } from '@/components/ui/button';
 import { EmptyPage } from '@/components/ui/empty.page';
 import { useRouter } from 'next/navigation';
 import { PUBLIC_PAGES } from '@/configs/public.config';
+import { PaySection } from './components/pay.section';
 
 export function Cart() {
   const { cartItems } = useCart();
@@ -24,13 +25,8 @@ export function Cart() {
               />
             ))}
           </ul>
-          <div className='space-y-6 p-2 main-wrapper sticky top-24'>
-            <div className='flex justify-between gap-2 text-black/80 font-semibold text-xl'>
-              <span>Total:</span>
-              <span>$1000</span>
-            </div>
-            <Button className='w-full'>Buy this</Button>
-          </div>
+
+          <PaySection />
         </div>
       ) : (
         <EmptyPage>

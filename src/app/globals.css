@@ -2,7 +2,7 @@
 
 @theme {
   --color-bg: #ebebeb;
-  --color-primary: #16a681;
+  --color-primary: #ff6852;
   --color-secondary: #d3d3d3;
   --color-accent: #4945ff;
   --color-text: #272727;
@@ -15,7 +15,7 @@
 }
 
 body {
-  @apply bg-bg;
+  @apply bg-bg select-none;
 }
 
 input {

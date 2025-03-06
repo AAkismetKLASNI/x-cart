@@ -33,9 +33,10 @@ export function useAuthForm(isLogin: boolean) {
     mutationKey: ['register'],
     mutationFn: (data: IFormData) => authService.main('register', data, items),
     onSuccess: () => {
+      toast.success('Successful registration!');
       reset();
       clearCart();
-      router.push(PUBLIC_PAGES.HOME);
+      router.back();
     },
     onError: async (error) => {
       if (axios.isAxiosError(error)) {
@@ -48,9 +49,10 @@ export function useAuthForm(isLogin: boolean) {
     mutationKey: ['login'],
     mutationFn: (data: IFormData) => authService.main('login', data, items),
     onSuccess: () => {
+      toast.success('Successful authorization!');
       reset();
       clearCart();
-      router.push(PUBLIC_PAGES.HOME);
+      router.back();
     },
     onError: async (error) => {
       if (axios.isAxiosError(error)) {
