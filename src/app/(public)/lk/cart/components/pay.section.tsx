@@ -6,6 +6,8 @@ import { useCart } from '@/hooks/use.cart';
 import { useProfile } from '@/hooks/use.profile';
 import { useRouter } from 'next/navigation';
 import { PUBLIC_PAGES } from '@/configs/public.config';
+import { useCheckout } from '../hooks/use.checkout';
+import { Loader } from '@/components/ui/loader';
 
 export function PaySection() {
   const { cartItems } = useCart();
@@ -14,6 +16,7 @@ export function PaySection() {
   const router = useRouter();
 
   const { mutatePromo, discountValue, promoCode } = usePromoCode();
+  const { checkout, isPending } = useCheckout({ promoCode: promoCode.current });
 
   const subTotal = cartItems.reduce(
     (acc, item) =>
@@ -48,14 +51,17 @@ export function PaySection() {
         <span>${finallyTotal.toFixed(2)}</span>
       </div>
       <Button
+        disabled={isPending}
         onClick={() => {
           if (!user.isLoggedIn) {
             router.push(PUBLIC_PAGES.LOGIN);
+            return;
           }
+          checkout();
         }}
-        className='w-full'
+        className='w-full min-h-10'
       >
-        Buy this
+        {isPending ? <Loader className='border-white mx-auto' /> : 'Buy this'}
       </Button>
     </div>
   );

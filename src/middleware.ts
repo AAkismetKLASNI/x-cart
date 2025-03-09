@@ -8,7 +8,7 @@ export const middleware = (req: NextRequest) => {
   const refreshToken = cookies.get(AuthTokens.REFRESH_TOKEN)?.value;
 
   const isAuthPage = url.includes('/login') || url.includes('/register');
-  const isLk = url.includes('/lk');
+  const isLk = url.includes('/lk') || url.includes('/lk/orders');
 
   if (isAuthPage && refreshToken) {
     return NextResponse.redirect(new URL(PUBLIC_PAGES.HOME, url));
@@ -27,4 +27,4 @@ export const middleware = (req: NextRequest) => {
   }
 };
 
-export const config = { matcher: ['/login', '/register', '/lk'] };
+export const config = { matcher: ['/login', '/register', '/lk', '/lk/orders'] };

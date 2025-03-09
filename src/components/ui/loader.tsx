@@ -1,5 +1,15 @@
-export function Loader() {
+import { twMerge } from 'tailwind-merge';
+
+interface Props {
+  className?: string;
+}
+
+export function Loader({ className }: Props) {
   return (
-    <div className='w-4 h-4 border-2 border-primary border-r-0 rounded-full animate-spin'></div>
+    <div
+      className={twMerge(
+        `w-4 h-4 border-2 border-primary border-r-0 rounded-full animate-spin ${className}`
+      )}
+    ></div>
   );
 }

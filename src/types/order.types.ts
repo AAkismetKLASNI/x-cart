@@ -21,7 +21,7 @@ export interface IOrder {
 }
 
 export interface CreateOrderDto {
-  promoCode?: string;
+  promoCode?: string | null;
 }
 
 export type OrderStatus = 'pending' | 'processing' | 'completed' | 'canceled';
