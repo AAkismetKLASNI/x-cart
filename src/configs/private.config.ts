@@ -1,7 +1,7 @@
-class PrivatePages {
+class privatePages {
   LK = '/lk';
   BASKET = '/lk/cart';
   ORDERS = '/lk/orders';
 }
 
-export const privatePages = new PrivatePages();
+export const PRIVATE_PAGES = new privatePages();

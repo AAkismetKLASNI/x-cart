@@ -1,40 +1,58 @@
 import { Icon } from '@/components/ui/icon';
 import { useChangeQuantityCartItem } from '@/hooks/use.change.quantity.cart.item';
-import { useRemoveFromCart } from '@/hooks/use.remove.from.cart';
+import { useRemoveFromCart } from '@/app/(public)/lk/cart/hooks/use.remove.from.cart';
 import type { ISimpleCartItem } from '@/types/cart.types';
 import { Minus, Plus, Trash } from 'lucide-react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { Badge } from '@/components/ui/badge';
+
+const cartVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.2,
+      ease: 'easeOut',
+      delay: i * 0.05,
+    },
+  }),
+};
 
 interface Props {
   item: ISimpleCartItem;
+  index: number;
 }
 
-export function CartItem({ item }: Props) {
+export function CartItem({ item, index }: Props) {
   const { mutateRemoveItem } = useRemoveFromCart();
   const { mutateChangeQuantity } = useChangeQuantityCartItem();
 
   return (
-    <div
-      className={`grid gap-2 grid-cols-[.15fr_1fr_.20fr_1fr] main-wrapper items-center ${
-        item.asSecondItem && 'bg-gradient-to-r from-red-200 to-amber-100 '
+    <motion.div
+      // exit={{ opacity: 0, transition: { duration: 0.05 } }} TODO: решить надо ли оно мне + лишние теги удалитьяё
+      initial='hidden'
+      animate='visible'
+      custom={index}
+      variants={cartVariants}
+      layout
+      className={`grid gap-2 grid-cols-[.18fr_1fr_.20fr_1fr] main-wrapper items-center ${
+        item.product.isHasSecondDiscount && 'bg-gradient-to-r via-red-100 to-blue-50 '
       }`}
     >
       <Image
         src={item.product.image}
         alt={item.product.name}
-        width='80'
-        height='80'
-        className='rounded-md '
+        width='90'
+        height='90'
+        className='rounded-md'
       />
 
-      <div className='space-y-2 text-black/80'>
+      <div className='space-y-2'>
         <div className='font-semibold flex items-center gap-4'>
           <p>{item.product.name}</p>
-          {item.product.isHasSecondDiscount && (
-            <span className='text-white bg-accent py-0.5 px-2 rounded-md text-sm'>
-              2nd discount
-            </span>
-          )}
+          {item.product.isHasSecondDiscount && <Badge>2nd discount</Badge>}
         </div>
         <div className='space-x-2'>
           {item.asSecondItem ? (
@@ -76,13 +94,12 @@ export function CartItem({ item }: Props) {
         />
       </div>
 
-      <div className='justify-self-end'>
-        <Icon
-          onClick={() => mutateRemoveItem(item.id)}
-          Icon={Trash}
-          size='18'
-        />
-      </div>
-    </div>
+      <Icon
+        className='justify-self-end'
+        onClick={() => mutateRemoveItem(item.id)}
+        Icon={Trash}
+        size='18'
+      />
+    </motion.div>
   );
 }

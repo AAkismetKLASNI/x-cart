@@ -9,7 +9,7 @@ interface Props {
 
 export function Home({ products }: Props) {
   return (
-    <div className='grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-4 lg:gap-6 lg:grid-cols-4'>
+    <main className='grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-4 lg:gap-6 lg:grid-cols-4'>
       {products.map((product, index) => (
         <ProductItem
           index={index}
@@ -17,6 +17,6 @@ export function Home({ products }: Props) {
           product={product}
         />
       ))}
-    </div>
+    </main>
   );
 }

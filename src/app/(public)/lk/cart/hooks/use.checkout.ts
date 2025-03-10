@@ -10,7 +10,6 @@ export function useCheckout(dto: CreateOrderDto) {
     mutationKey: ['checkout'],
     mutationFn: () => paymentService.checkout(dto),
     onSuccess: (data) => {
-      console.log('data', data);
       const token = data.data.confirmationToken;
 
       if (token) {

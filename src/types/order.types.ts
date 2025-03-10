@@ -1,5 +1,4 @@
 import { ICart } from './cart.types';
-import { ITransaction } from './transaction.types';
 import { IUser } from './user.types';
 
 export interface IOrder {
@@ -12,7 +11,7 @@ export interface IOrder {
 
   user?: IUser;
   cart: ICart;
-  transaction: ITransaction;
+  transactionId: string;
 
   promoCode?: {
     code: string;

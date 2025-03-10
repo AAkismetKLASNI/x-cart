@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { useAuthForm } from '../hooks/use.auth.form';
 import { Field } from '@/components/ui/field';
-import { Loader } from '@/components/ui/loader';
+import { Loader } from '@/components/ui/loaders/loader';
 
 export function AuthForm({ isLogin }: { isLogin: boolean }) {
   const { handleSubmit, isLoading, onSubmit, register } = useAuthForm(isLogin);

@@ -3,7 +3,10 @@ import type { IProduct } from '@/types/product.types';
 import Image from 'next/image';
 import { ShoppingCart } from 'lucide-react';
 import { m } from 'framer-motion';
-import { useAddToCart } from '@/hooks/use.add.to.cart';
+import { useAddToCart } from '@/app/(public)/lk/cart/hooks/use.add.to.cart';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { PRIVATE_PAGES } from '@/configs/private.config';
 
 const cardVariants = {
   hidden: { opacity: 0, x: -20 },
@@ -13,7 +16,7 @@ const cardVariants = {
     transition: {
       duration: 0.2,
       ease: 'easeOut',
-      delay: i * 0.1,
+      delay: i * 0.08,
     },
   }),
 };
@@ -24,9 +27,15 @@ interface Props {
 }
 
 export function ProductItem({ product, index }: Props) {
+  const [isAdded, setIsAdded] = useState(false);
   const { mutateAddToCart } = useAddToCart();
 
+  const router = useRouter();
+
   const handleAddToCart = () => {
+    if (isAdded) return router.push(PRIVATE_PAGES.BASKET);
+
+    setIsAdded(true);
     mutateAddToCart({ product, quantity: 1 });
   };
 
@@ -48,19 +57,23 @@ export function ProductItem({ product, index }: Props) {
       />
 
       <div className='space-y-2 p-1'>
-        <div className='flex justify-between items-center gap-2 text-black/85'>
+        <div className='flex justify-between items-center gap-2'>
           <p className='font-semibold text-xl'>${product.price}</p>
           <p className='line-clamp-1'>{product.name}</p>
         </div>
-        <p className='line-clamp-2 text-black/60'>{product.description}</p>
+        <p className='line-clamp-2 text-text/80'>{product.description}</p>
         <Button
-          className='w-full'
+          className={`w-full h-10 ${isAdded && 'bg-black/10 text-text'}`}
           onClick={handleAddToCart}
         >
-          <ShoppingCart
-            size='20'
-            className='mx-auto'
-          />
+          {isAdded ? (
+            'In cart'
+          ) : (
+            <ShoppingCart
+              size='20'
+              className='mx-auto'
+            />
+          )}
         </Button>
       </div>
     </m.div>

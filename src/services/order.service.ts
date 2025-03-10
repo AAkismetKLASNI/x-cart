@@ -5,7 +5,7 @@ class OrderService {
   private BASE_URL = '/orders';
 
   getAll() {
-    return instance.get<IOrder>(this.BASE_URL);
+    return instance.get<IOrder[]>(this.BASE_URL);
   }
 }
 

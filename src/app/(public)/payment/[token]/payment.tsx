@@ -23,7 +23,7 @@ export function Payment() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const checkout = new (window as any).YooMoneyCheckoutWidget({
       confirmation_token: token,
-      return_url: `http://localhost:3000/thanks`,
+      return_url: `http://localhost:3000/lk/orders`,
 
       error_callback(error: string) {
         console.error(error);
@@ -33,5 +33,5 @@ export function Payment() {
     checkout.render('payment-form');
   }, [isLoadedScript, token]);
 
-  return <div id='payment-form'></div>;
+  return <main id='payment-form'></main>;
 }

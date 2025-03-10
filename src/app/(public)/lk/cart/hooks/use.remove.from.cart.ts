@@ -1,6 +1,6 @@
 import { useGuestCartStore } from '@/store/guest.store';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useProfile } from './use.profile';
+import { useProfile } from '../../../../../hooks/use.profile';
 import { cartService } from '@/services/cart.service';
 import toast from 'react-hot-toast';
 

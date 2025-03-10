@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useProfile } from './use.profile';
+import { useProfile } from '../../../../../hooks/use.profile';
 import { IAddToCart } from '@/types/cart.types';
 import { useGuestCartStore } from '@/store/guest.store';
 import { cartService } from '@/services/cart.service';

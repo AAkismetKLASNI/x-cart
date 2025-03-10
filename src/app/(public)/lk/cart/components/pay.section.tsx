@@ -2,12 +2,13 @@ import { Field } from '@/components/ui/field';
 import { usePromoCode } from '../hooks/use.promo.code';
 import { useDebounce } from '@/hooks/use.debounce';
 import { Button } from '@/components/ui/button';
-import { useCart } from '@/hooks/use.cart';
+import { useCart } from '@/app/(public)/lk/cart/hooks/use.cart';
 import { useProfile } from '@/hooks/use.profile';
 import { useRouter } from 'next/navigation';
 import { PUBLIC_PAGES } from '@/configs/public.config';
 import { useCheckout } from '../hooks/use.checkout';
-import { Loader } from '@/components/ui/loader';
+import { Loader } from '@/components/ui/loaders/loader';
+import { m } from 'framer-motion';
 
 export function PaySection() {
   const { cartItems } = useCart();
@@ -34,7 +35,12 @@ export function PaySection() {
   }, 1000);
 
   return (
-    <div className='space-y-6 p-2 main-wrapper sticky top-24'>
+    <m.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ ease: 'easeOut', duration: 0.2 }}
+      className='space-y-6 p-2 main-wrapper sticky top-24'
+    >
       {user.isLoggedIn && (
         <Field
           placeholder='Promo'
@@ -46,9 +52,9 @@ export function PaySection() {
         />
       )}
 
-      <div className='flex justify-between gap-2 text-black/80 font-semibold text-xl'>
+      <div className='flex justify-between gap-2 font-semibold text-xl'>
         <span>Total:</span>
-        <span>${finallyTotal.toFixed(2)}</span>
+        <span className='transition-all'>${finallyTotal.toFixed(2)}</span>
       </div>
       <Button
         disabled={isPending}
@@ -63,6 +69,6 @@ export function PaySection() {
       >
         {isPending ? <Loader className='border-white mx-auto' /> : 'Buy this'}
       </Button>
-    </div>
+    </m.div>
   );
 }
