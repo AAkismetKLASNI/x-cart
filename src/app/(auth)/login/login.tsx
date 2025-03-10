@@ -7,7 +7,7 @@ import { AuthToggle } from '../components/auth.toggle';
 export function Login() {
   return (
     <main className='h-screen flex justify-center items-center'>
-      <div className='bg-neutral-50 p-4 space-y-6 rounded-md shadow-md shadow-neutral-200'>
+      <div className='main-wrapper p-4 space-y-6'>
         <Logo />
         <AuthForm isLogin />
         <AuthToggle isLogin />

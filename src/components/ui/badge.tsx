@@ -9,7 +9,7 @@ export function Badge({ children, className }: PropsWithChildren<Props>) {
   return (
     <div
       className={twMerge(
-        `px-2.5 py-1.5 rounded-lg inline-block text-xs font-semibold bg-primary text-white ${className}`
+        `px-2.5 py-1.5 rounded-lg inline-block text-xs font-semibold bg-red-500 text-white ${className}`
       )}
     >
       {children}

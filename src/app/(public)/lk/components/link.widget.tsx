@@ -14,12 +14,17 @@ export function LinkWidget({ href, icon, title }: Props) {
   return (
     <div
       onClick={() => router.push(href)}
-      className='bg-gradient-to-r from-red-100 to-blue-100 rounded-md p-4 flex flex-col gap-4 justify-center items-center cursor-pointer group'
+      className='bg-gradient-to-r from-red-100 to-blue-100 dark:from-dark-bg dark:to-dark-bg rounded-md p-4 flex flex-col gap-4 justify-center items-center cursor-pointer group'
     >
-      <div className='p-2 bg-white rounded-full transition-transform group-hover:scale-105'>
-        <Icon Icon={icon} />
+      <div className='p-2 rounded-full bg-white dark:bg-dark-secondary'>
+        <Icon
+          isGroup
+          Icon={icon}
+          className='group-hover:text-text'
+        />
       </div>
-      <div className='px-4 py-1 bg-white inline-block rounded-full transition-transform group-hover:scale-105'>
+
+      <div className='px-4 py-1 bg-white dark:bg-dark-accent inline-block rounded-full transition-transform group-hover:scale-105'>
         {title}
       </div>
     </div>

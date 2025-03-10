@@ -6,15 +6,20 @@ interface Props {
   className?: string;
   size?: string;
   onClick?: () => void;
+  isGroup?: boolean;
 }
 
-export function Icon({ Icon, className, size, onClick }: Props) {
+export function Icon({ Icon, className, size, onClick, isGroup = false }: Props) {
   return (
     <Icon
       onClick={onClick}
       size={size}
       className={twMerge(
-        `cursor-pointer text-gray-700 hover:text-text transition-colors ${className}`
+        `cursor-pointer text-gray-700 dark:text-gray-500 ${
+          isGroup
+            ? 'group-hover:dark:text-dark-text group-hover:text-text'
+            : 'hover:dark:text-dark-text hover:text-text'
+        }  transition-colors ${className}`
       )}
     />
   );

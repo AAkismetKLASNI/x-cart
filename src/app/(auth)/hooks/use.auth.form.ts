@@ -36,7 +36,7 @@ export function useAuthForm(isLogin: boolean) {
       toast.success('Successful registration!');
       reset();
       clearCart();
-      router.back();
+      router.push(PUBLIC_PAGES.HOME);
     },
     onError: async (error) => {
       if (axios.isAxiosError(error)) {
@@ -52,7 +52,7 @@ export function useAuthForm(isLogin: boolean) {
       toast.success('Successful authorization!');
       reset();
       clearCart();
-      router.back();
+      router.push(PUBLIC_PAGES.HOME);
     },
     onError: async (error) => {
       if (axios.isAxiosError(error)) {

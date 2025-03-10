@@ -31,15 +31,12 @@ export function CartItem({ item, index }: Props) {
 
   return (
     <motion.div
-      // exit={{ opacity: 0, transition: { duration: 0.05 } }} TODO: решить надо ли оно мне + лишние теги удалитьяё
       initial='hidden'
       animate='visible'
       custom={index}
       variants={cartVariants}
       layout
-      className={`grid gap-2 grid-cols-[.18fr_1fr_.20fr_1fr] main-wrapper items-center ${
-        item.product.isHasSecondDiscount && 'bg-gradient-to-r via-red-100 to-blue-50 '
-      }`}
+      className={`grid gap-2 grid-cols-[.18fr_1fr_.20fr_1fr] main-wrapper items-center`}
     >
       <Image
         src={item.product.image}

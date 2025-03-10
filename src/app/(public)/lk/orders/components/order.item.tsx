@@ -10,15 +10,15 @@ export function OrderItem({ order }: Props) {
   return (
     <li className='space-y-4'>
       <div className='space-x-4'>
-        <Badge className='bg-cyan-600'>id: {order.transactionId}</Badge>
-        <Badge className='bg-lime-600'>
+        <Badge>total: ${order.total}</Badge>
+        <Badge className='bg-green-700'>status: {order.status}</Badge>
+        <Badge className='bg-lime-700'>
           date: {new Date(order.createdAt).toLocaleDateString('ru-RU')}
         </Badge>
-        <Badge className='bg-green-600'>status: {order.status}</Badge>
-        <Badge>total: ${order.total}</Badge>
+        <Badge className='bg-cyan-700'>id: {order.transactionId}</Badge>
       </div>
 
-      <ul className='grid grid-cols-2 gap-4'>
+      <ul className='grid grid-cols-1 gap-4'>
         {order.cart.items.map((item) => (
           <div
             key={item.id}

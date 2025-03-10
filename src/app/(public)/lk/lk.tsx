@@ -2,12 +2,13 @@
 
 import { GlobalLoader } from '@/components/ui/loaders/global.loader';
 import { useProfile } from '@/hooks/use.profile';
-import { Boxes, CarrotIcon, LayoutGrid } from 'lucide-react';
+import { Boxes, CarrotIcon, CreditCard, LayoutGrid } from 'lucide-react';
 import Image from 'next/image';
 import { LinkWidget } from './components/link.widget';
 import { PRIVATE_PAGES } from '@/configs/private.config';
 import { m } from 'framer-motion';
 import { PUBLIC_PAGES } from '@/configs/public.config';
+import { Icon } from '@/components/ui/icon';
 
 export function Lk() {
   const { user, isLoading } = useProfile();
@@ -29,7 +30,7 @@ export function Lk() {
             }}
             className='grid grid-rows-2 gap-4'
           >
-            <div className='main-wrapper flex gap-4 items-center'>
+            <div className='main-wrapper cursor-pointer flex gap-4 items-center'>
               {user.avatarPath ? (
                 <Image
                   src={user.avatarPath}
@@ -45,7 +46,13 @@ export function Lk() {
               )}
               <p className='font-semibold'>{user.name ? user.name : 'User'}</p>
             </div>
-            <div className='main-wrapper'></div>
+            <div className='main-wrapper cursor-pointer flex gap-4 items-center justify-center group'>
+              <Icon
+                Icon={CreditCard}
+                isGroup
+              />
+              <span>- 354 (bonuses)</span>
+            </div>
           </m.div>
 
           <m.div

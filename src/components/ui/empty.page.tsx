@@ -16,7 +16,7 @@ export function EmptyPage({ children }: PropsWithChildren) {
         stiffness: 200,
         damping: 20,
       }}
-      className='main-wrapper p-6 space-y-4 text-center mx-auto'
+      className='main-wrapper p-6 space-y-4 text-center mx-auto group'
     >
       {children}
       <Button

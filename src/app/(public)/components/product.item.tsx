@@ -7,6 +7,7 @@ import { useAddToCart } from '@/app/(public)/lk/cart/hooks/use.add.to.cart';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { PRIVATE_PAGES } from '@/configs/private.config';
+import { Icon } from '@/components/ui/icon';
 
 const cardVariants = {
   hidden: { opacity: 0, x: -20 },
@@ -61,9 +62,13 @@ export function ProductItem({ product, index }: Props) {
           <p className='font-semibold text-xl'>${product.price}</p>
           <p className='line-clamp-1'>{product.name}</p>
         </div>
-        <p className='line-clamp-2 text-text/80'>{product.description}</p>
+        <p className='line-clamp-2 text-text/80 dark:text-dark-text/80'>
+          {product.description}
+        </p>
         <Button
-          className={`w-full h-10 ${isAdded && 'bg-black/10 text-text'}`}
+          className={`w-full h-10 ${
+            isAdded && 'bg-black/15 text-text dark:text-dark-text'
+          }`}
           onClick={handleAddToCart}
         >
           {isAdded ? (
