@@ -36,7 +36,7 @@ export function CartItem({ item, index }: Props) {
       custom={index}
       variants={cartVariants}
       layout
-      className={`grid gap-2 grid-cols-[.18fr_1fr_.20fr_1fr] main-wrapper items-center`}
+      className={`grid gap-4 grid-cols-[.18fr_1fr_.20fr_1fr] main-wrapper items-center`}
     >
       <Image
         src={item.product.image}

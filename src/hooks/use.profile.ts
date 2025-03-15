@@ -10,6 +10,8 @@ export const useProfile = () => {
     queryKey: ['profile'],
     queryFn: async () => {
       const profile = await userService.fetchProfile();
+
+      console.log('pr', profile);
       if (!profile) return null;
       return profile;
     },
@@ -17,22 +19,21 @@ export const useProfile = () => {
   });
 
   //fix: решить нужно ли мне это
-  // const { data: dataTokens, isSuccess } = useQuery({
-  //   queryKey: ['new tokens'],
-  //   queryFn: async () => {
-  //     const res = await authService.getNewTokens();
-  //     console.log('res', res);
+  const { data: dataTokens, isSuccess } = useQuery({
+    queryKey: ['new tokens'],
+    queryFn: async () => {
+      const res = await authService.getNewTokens();
 
-  //     return res;
-  //   },
-  //   enabled: !data,
-  // });
+      return res;
+    },
+    enabled: !data?.data,
+  });
 
-  // useEffect(() => {
-  //   if (!isSuccess) return;
+  useEffect(() => {
+    if (!isSuccess) return;
 
-  //   if (dataTokens.data.accessToken) saveTokenStorage(dataTokens.data.accessToken);
-  // }, [isSuccess]);
+    if (dataTokens.data.accessToken) saveTokenStorage(dataTokens.data.accessToken);
+  }, [isSuccess]);
 
   const profile = data?.data;
 

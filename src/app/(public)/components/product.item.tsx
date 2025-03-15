@@ -57,12 +57,14 @@ export function ProductItem({ product, index }: Props) {
         priority={true}
       />
 
-      <div className='space-y-2 p-1'>
+      <div className='space-y-4 p-1'>
         <div className='flex justify-between items-center gap-2'>
-          <p className='font-semibold text-xl'>${product.price}</p>
-          <p className='line-clamp-1'>{product.name}</p>
+          <p className='font-semibold text-xl text-black dark:text-green-600'>
+            ${product.price}
+          </p>
+          <p className='line-clamp-1 font-semibold'>{product.name}</p>
         </div>
-        <p className='line-clamp-2 text-text/80 dark:text-dark-text/80'>
+        <p className='line-clamp-1 text-sm text-text/80 dark:text-dark-text/80'>
           {product.description}
         </p>
         <Button

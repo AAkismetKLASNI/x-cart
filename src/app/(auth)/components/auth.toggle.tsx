@@ -6,11 +6,23 @@ export function AuthToggle({ isLogin }: { isLogin: boolean }) {
     <div>
       {isLogin ? (
         <p>
-          no account? <Link href={PUBLIC_PAGES.REGISTER}>register</Link>
+          no account?{' '}
+          <Link
+            className='underline'
+            href={PUBLIC_PAGES.REGISTER}
+          >
+            register
+          </Link>
         </p>
       ) : (
         <p>
-          exist account? <Link href={PUBLIC_PAGES.LOGIN}>authorization</Link>
+          exist account?{' '}
+          <Link
+            className='underline'
+            href={PUBLIC_PAGES.LOGIN}
+          >
+            authorization
+          </Link>
         </p>
       )}
     </div>

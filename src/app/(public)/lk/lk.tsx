@@ -44,7 +44,7 @@ export function Lk() {
                   {user?.email && user.email[0].toUpperCase()}
                 </div>
               )}
-              <p className='font-semibold'>{user.name ? user.name : 'User'}</p>
+              <p>{user.name ? user.name : 'User'}</p>
             </div>
             <div className='main-wrapper cursor-pointer flex gap-4 items-center justify-center group'>
               <Icon
