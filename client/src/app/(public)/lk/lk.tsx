@@ -2,16 +2,18 @@
 
 import { GlobalLoader } from '@/components/ui/loaders/global.loader';
 import { useProfile } from '@/hooks/use.profile';
-import { Boxes, CarrotIcon, CreditCard, LayoutGrid } from 'lucide-react';
+import { Boxes, CarrotIcon, CreditCard, LayoutGrid, LogOut } from 'lucide-react';
 import Image from 'next/image';
 import { LinkWidget } from './components/link.widget';
 import { PRIVATE_PAGES } from '@/configs/private.config';
 import { m } from 'framer-motion';
 import { PUBLIC_PAGES } from '@/configs/public.config';
 import { Icon } from '@/components/ui/icon';
+import { useLogOut } from '@/hooks/use.log.out';
 
 export function Lk() {
   const { user, isLoading } = useProfile();
+  const { mutateLogOut } = useLogOut();
 
   return (
     <>
@@ -45,6 +47,12 @@ export function Lk() {
                 </div>
               )}
               <p>{user.name ? user.name : 'User'}</p>
+              <Icon
+                Icon={LogOut}
+                onClick={mutateLogOut}
+                size='20'
+                className='ml-auto'
+              />
             </div>
             <div className='main-wrapper cursor-pointer flex gap-4 items-center justify-center group'>
               <Icon

@@ -59,6 +59,7 @@ export class AuthService {
       throw new UnauthorizedException('Invalid refresh token');
     }
     const user = await this.userService.getById(result.id);
+
     return this.buildResponseObject(user);
   }
 

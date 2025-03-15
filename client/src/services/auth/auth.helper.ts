@@ -3,6 +3,7 @@ import { AuthTokens } from './auth.service';
 
 export const getAccessToken = () => {
   const accessToken = Cookies.get(AuthTokens.ACCESS_TOKEN);
+
   return accessToken || null;
 };
 
