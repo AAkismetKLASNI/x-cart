@@ -1,0 +1,28 @@
+model Order {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  userId String @map("user_id")
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  cart   Cart   @relation(fields: [cartId], references: [id])
+  cartId String @unique @map("cart_id")
+
+  status OrderStatus
+
+  promoCodeId String?    @map("promo_code_id")
+  promoCode   PromoCode? @relation(fields: [promoCodeId], references: [id], onDelete: Cascade)
+
+  total Float
+
+  transactionId Int?         @unique @map("transaction_id")
+  transaction   Transaction? @relation(fields: [transactionId], references: [id], onDelete: Cascade)
+}
+
+enum OrderStatus {
+  pending 
+  processing
+  completed
+  canceled
+}

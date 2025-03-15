@@ -1,0 +1,10 @@
+model PromoCode {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  code     String @unique
+  discount Float
+
+  orders Order[]
+}

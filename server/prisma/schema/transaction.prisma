@@ -1,0 +1,27 @@
+model Transaction {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  paymentId     String  @unique @map("payment_id")
+  paymentMethod String? @map("payment_method")
+
+  amount String
+
+  status TransactionStatus
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String @map("user_id")
+
+  order Order?
+
+  @@map("transaction")
+}
+
+enum TransactionStatus {
+  pending
+  waiting_for_capture
+  succeeded
+  canceled
+  refunded
+}

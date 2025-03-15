@@ -1,0 +1,18 @@
+model Product {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  name  String
+  image String
+
+  price         Float
+  discountPrice Float @map("discount_price")
+
+  description String?
+  category    String
+
+  isHasSecondDiscount Boolean @default(false) @map("is_has_second_discount")
+
+  cartItems CartItem[]
+}

@@ -1,0 +1,35 @@
+model Cart {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  userId String @map("user_id")
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, name: "UserCarts")
+
+  order Order?
+
+  status CartStatus @default(ACTIVE)
+
+  items CartItem[]
+}
+
+model CartItem {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  cartId String @map("cart_id")
+  cart   Cart   @relation(fields: [cartId], references: [id], onDelete: Cascade)
+
+  productId String  @map("product_id")
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  asSecondItem Boolean @default(false) @map("as_second_item")
+
+  quantity Int
+}
+
+enum CartStatus {
+  ACTIVE
+  PAID
+}

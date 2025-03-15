@@ -1,0 +1,23 @@
+model User {
+  id         String  @id @default(cuid())
+  email      String  @unique
+  name       String?
+  password   String
+  avatarPath String?
+
+  verificationToken String? @default(cuid()) @map("verification_token")
+
+  rights       Role[]        @default([USER])
+  transactions Transaction[]
+
+  carts Cart[] @relation("UserCarts")
+
+  orders Order[]
+}
+
+enum Role {
+  USER
+  PREMIUM
+  MANAGER
+  ADMIN
+}
