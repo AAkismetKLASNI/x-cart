@@ -24,5 +24,5 @@ https://github.com/user-attachments/assets/4477fd99-6a24-43f1-9f8d-c6d05099d9ef
 
 ### Шаги по запуску:
 - Склонировать проект
-- Заменить все нужные .env (смотреть файл instruction.tsx)
+- Заменить все нужные .env (смотреть файл instruction.txt)
 - Запуск по скриптам
